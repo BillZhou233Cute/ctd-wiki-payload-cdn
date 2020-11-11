@@ -1,0 +1,203 @@
+
+<!doctype html>
+<html lang="zh">
+
+<!-- Original made by Teages / Modefied By BillZhou233 -->
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cytoid Unofficial Wiki</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="keywords" content="games,music,cytoid">
+  <meta name="description" content="「让我们一起，塑造出音乐的天地吧...！」">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/BillZhou233/Cytoid-wiki@master/site-source/css/style.min.css" title="vue">
+  <link rel="stylesheet" href="https://fonts.font.im/css?family=Noto+Sans+SC:400,700|Nunito:300,400,700&display=swap">
+
+  <style>
+    nav.app-nav li ul {
+      min-width: 100px;
+    }
+
+    li {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-sub-sidebar {
+      order: -114514;
+    }
+
+    .active {
+      display: inline;
+    }
+  </style>
+
+  <style>
+    *::-webkit-scrollbar {
+        /*滚动条整体样式*/
+        width: 12px;/*定义纵向滚动条宽度*/
+        height: 12px;/*定义横向滚动条高度*/
+    }
+
+    .fancybox-iframe::-webkit-scrollbar {
+        /*event展示滚动条整体样式*/
+        width: 12px;/*定义纵向滚动条宽度*/
+        height: 12px;/*定义横向滚动条高度*/
+    }
+
+
+    *::-webkit-scrollbar-thumb {
+        /*滚动条内部滑块*/
+        border-radius: 8px;
+        background-color: hsla(220, 4%, 58%, 0.3);
+        transition: background-color 0.3s;
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+        /*鼠标悬停滚动条内部滑块*/
+        background: #bbb;
+    }
+
+    *::-webkit-scrollbar-track {
+        /*滚动条内部轨道*/
+        background: #ededed;
+    }
+    /*Thank https://juejin.im/post/6844903886185037832*/
+  </style>
+
+  <script type="text/javascript" src="https://unpkg.com/jquery@3.2.1/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/jquery-easing@0.0.1/dist/jquery.easing.1.3.umd.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/BillZhou233/Cytoid-wiki@master/site-source/css/jquery.fancybox.min.css" />
+  <script src="https://cdn.jsdelivr.net/gh/BillZhou233/Cytoid-wiki@master/site-source/js/jquery.fancybox.min.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+  <nav>
+    <ul class="ignore-opencc">
+      <li><a href="javascript:void(0)" onclick="setLang('zh-hans')">简体</a></li>
+      <li>繁體（OpenCC）<ul>
+          <li><a href="javascript:void(0)" onclick="setLang('zh-hant','hk')">HK</a></li>
+          <li><a href="javascript:void(0)" onclick="setLang('zh-hant','tw')">TW</a></li>
+          <li><a href="javascript:void(0)" onclick="setLang('zh-hant','twp')">TWP</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <div id="app">客服娘铲车中...</div>
+  <script src="https://unpkg.com/docsify@4.11/lib/docsify.min.js"></script>
+  <script src="https://unpkg.com/docsify-edit-on-github@1.0.3/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/BillZhou233/Cytoid-wiki@master/site-source/js/opencc/opencc.js"></script>
+
+  <script>
+    var cdnroot = 'https://cdn.jsdelivr.net/gh/BillZhou233/Cytoid-wiki@master/';
+    if (window.location.search.substring(0) !== "")
+    {
+        cdnroot = 'https://cdn.jsdelivr.net/gh/BillZhou233/Cytoid-wiki@' + window.location.search.substring(1) + '/';
+        alert("检测到地址栏中传入了 ? 参数，测试模式已启动。\n需要回到正常查看模式，请删除链接中从 ? 开始到 # 结束（不包括 # 号）的参数。");
+    }
+
+    function setLang(lang, mode)
+    {
+        localStorage.setItem("userLang", lang);
+        if (mode !== undefined) localStorage.setItem("convertMode", mode);
+        history.go(0);
+    }
+
+    const useZHT = (localStorage.getItem("userLang") == "zh-hant");
+
+    window.$docsify = {
+      basePath: cdnroot,
+      auto2top: true,
+      homepage: '_index.md',
+      coverpage: '_cover-cdn.md',
+      executeScript: true,
+      loadSidebar: true,
+      loadNavbar: false,  // enable when multiple mode ready
+      mergeNavbar: false,
+      maxLevel: 4,
+      subMaxLevel: 5,
+      name: '<img src="https://cdn.jsdelivr.net/gh/BillZhou233/Cytoid-wiki@master/site-source/pic/cytoid-girl.png" data-origin="https://cdn.jsdelivr.net/gh/BillZhou233/Cytoid-wiki@master/site-source/pic/cytoid-girl.png" alt="logo" style="width:130px;display:block;margin:0 auto;">Cytoid Unofficial Wiki',
+      search: [
+        '/'
+      ],
+      search: {
+        noData: '则不呢就美丽了',
+        paths: 'auto',
+        placeholder: (useZHT)? '搜尋': '搜索'
+      },
+      copyCode: {
+        buttonText: (useZHT)? '複製': '复制',
+        errorText: (useZHT)? '失敗': '失败',
+        successText: '成功',
+      },
+      plugins: [
+        EditOnGithubPlugin.create('https://github.com/BillZhou233/Cytoid-wiki/blob/master/', null, '发现问题？请在 GitHub 上协助我们更正！'),
+        function(hook, vm)
+        {
+            hook.afterEach((html) =>
+            {
+                var footer =
+                [
+                    '<hr/>',
+                    '<footer>',
+                    '<span>This is Cytoid Unofficial Wiki Maintained by <a href="https://github.com/BillZhou233" target="_blank">BillZhou233</a></span></br>',
+                    '<span>Generated with <a href="https://github.com/docsifyjs/docsify" target="_blank">Docsify ',
+                    window.Docsify.version,
+                    '</a> | CDN by <a href="',
+                    cdnroot,
+                    '" target="_blank">jsDelivr</a> & <a href="https://unpkg.com/" target="_blank">UNPKG</a></span>',
+                    '</footer>'
+                ].join('');
+                return html + footer;
+            });
+            hook.doneEach(async () =>
+            {
+                $("html").attr("lang", (useZHT)? "zh-hant": "zh-hans");
+                if (useZHT)
+                {
+                  if (window.convert === undefined) window.convert = await OpenCC.Converter('cn', localStorage.getItem("convertMode"));
+                    const startNode = document.documentElement;
+                    const HTMLConvertHandler = OpenCC.HTMLConverter2(convert, startNode);
+                    HTMLConvertHandler.convert();
+                }
+            });
+        }
+      ],
+
+      tabs: {
+        persist    : true,      // default
+        sync       : true,      // default
+        theme      : 'classic', // default
+        tabComments: true,      // default
+        tabHeadings: true       // default
+      }
+
+    }
+  </script>
+
+  <script src="https://unpkg.com/docsify-copy-code@2.1.0/dist/docsify-copy-code.min.js"></script>
+  <script src="https://unpkg.com/docsify@4.11/lib/plugins/search.min.js"></script>
+  <script src="https://unpkg.com/docsify-tabs@1.4.3/dist/docsify-tabs.min.js"></script>
+
+  <script src="https://unpkg.com/prismjs@1.21.0/components/prism-markdown.min.js"></script>
+  <script src="https://unpkg.com/prismjs@1.21.0/components/prism-json.min.js"></script>
+  <!-- dark mode button -->
+  <script src="https://cdn.jsdelivr.net/gh/BillZhou233/Cytoid-wiki@master/site-source/js/auto-dark-mode.js"></script>
+  <button id="btn-dark" class="btn-dark btn-float2" title="Dark Mode" onclick="manualDark()">
+    <i class="fa fa-moon-o fa-rotate-270" aria-hidden="true"></i>
+  </button>
+  <!-- back to top button -->
+  <script src="https://cdn.jsdelivr.net/gh/BillZhou233/Cytoid-wiki@master/site-source/js/back-to-top.js"></script>
+  <button id="btn-top" class="btn-top btn-float2" title="Go to top">
+    <i class="fa fa-angle-double-up fa-lg" aria-hidden="true"></i>
+  </button>
+
+</body>
+
+</html>
